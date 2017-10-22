@@ -82,8 +82,77 @@ for val in letters {
 }
 //Swift 的Set类型没有确定的顺序，为了按照特定顺序来遍历一个Set中的值可以使用sorted()方法，它将返回一个有序数组，这个数组的元素排列顺序由操作符'<'对元素进行比较的结果来确定.
 for val in letters.sorted() {
-    print(val)
+    print("val = \(val)")
 }
+// 集合操作
+// 你可以高效地完成Set的一些基本操作，比如把两个集合组合到一起，判断两个集合共有元素，或者判断两个集合是否全包含，部分包含或者不相交。
+//使用intersection(_:)方法根据两个集合中都包含的值创建的一个新的集合。
+//使用symmetricDifference(_:)方法根据在一个集合中但不在两个集合中的值创建一个新的集合。
+//使用union(_:)方法根据两个集合的值创建一个新的集合。
+//使用subtracting(_:)方法根据不在该集合中的值创建一个新的集合。
+let oddDigits: Set = [1, 3, 5, 7, 9]
+let evenDigits: Set = [0, 2, 4, 6, 8]
+let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
+oddDigits.union(evenDigits).sorted() // 并集
+// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+oddDigits.intersection(evenDigits).sorted() // 交集
+// []
+oddDigits.subtracting(singleDigitPrimeNumbers).sorted() // a去除 a和b的交集
+// [1, 9]
+oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted() // a,b并集去除他们之间的交集
+// [1, 2, 9]
+//使用“是否相等”运算符(==)来判断两个集合是否包含全部相同的值。
+//使用isSubset(of:)方法来判断一个集合中的值是否也被包含在另外一个集合中。
+//使用isSuperset(of:)方法来判断一个集合中包含另一个集合中所有的值。
+//使用isStrictSubset(of:)或者isStrictSuperset(of:)方法来判断一个集合是否是另外一个集合的子集合或者父集合并且两个集合并不相等。
+//使用isDisjoint(with:)方法来判断两个集合是否不含有相同的值(是否没有交集)。
+let houseAnimals: Set = ["🐶", "🐱"]
+let farmAnimals: Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
+let cityAnimals: Set = ["🐦", "🐭"]
+houseAnimals.isSubset(of: farmAnimals)
+// true
+farmAnimals.isSuperset(of: houseAnimals)
+// true
+farmAnimals.isDisjoint(with: cityAnimals)
+// true
+
+
+// 字典
+//字典是一种存储多个相同类型的值的容器。每个值（value）都关联唯一的键（key），键作为字典中的这个值数据的标识符。和数组中的数据项不同，字典中的数据项并没有具体顺序。我们在需要通过标识符（键）访问数据的时候使用字典，这种方法很大程度上和我们在现实世界中使用字典查字义的方法一样。
+//注意:一个字典的Key类型必须遵循Hashable协议，就像Set的值类型。
+// 创建一个空的字典
+var dic = [Int: String]()
+dic[22] = "haha" // 赋值
+dic = [:] //清空
+print(dic)
+// 用字面量创建字典
+var dic1 = ["xiaoming" : "18", "xiaohong" : "22", "xiaoyue" : "23"]
+var dic2: [String: String] = ["xiaoming" : "18", "xiaohong" : "22", "xiaoyue" : "23"]
+dic1.count
+dic.isEmpty
+var dicKeyArr = [String](dic1.keys)
+var dicValueArr =  [String](dic1.values) //强制类型转换为[String]数组
+dic1["xiaoming"] = "99" // 修改或者设置值
+let r1: String? = dic1.updateValue("77", forKey: "xiaohong"); //返回一个可选值的旧值, 使用需要解包
+print(r1)
+
+let v1: String? = dic1["xiaohong"] //会返回一直可选值
+print(v1)
+
+let r2: String? = dic1.removeValue(forKey: "xiaohong")
+print(r2)
+dic1
+
+// 字典的遍历
+for (key,value) in dic1 {
+    print("key: \(key), and value : \(value)")
+}
+for key in dic1.keys {
+    print(key)
+}
+
+
+
 
 
 
