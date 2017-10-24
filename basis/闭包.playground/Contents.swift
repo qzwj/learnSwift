@@ -1,5 +1,5 @@
 //: Playground - noun: a place where people can play
-// 闭包
+// 闭包 (多看看, 有点难理解, 类似函数类型)
 import UIKit
 
 // 闭包是自包含的函数代码块, 可以在代码中被传递和使用, swift中的闭包与c和oc的blocks比较相似
