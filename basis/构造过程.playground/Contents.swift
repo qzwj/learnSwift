@@ -277,7 +277,8 @@ for item in breakfastList {
 //严格来说，构造器都不支持返回值。因为构造器本身的作用，只是为了确保对象能被正确构造。因此你只是用return nil表明可失败构造器构造失败，而不要用关键字return来表明构造成功。
 let wholeNumber: Double = 12345.0
 let pi = 3.14159
-//Int(wholeNumber)这个是强制转换, 下面的Int(exactly:)是可失败构造函数
+
+//Int(wholeNumber)这个是强制转换, 下面的Int(exactly:)是可失败构造函数, 小数部分不为0,会返回nil
 if let valueMaintained = Int(exactly: wholeNumber) {
     print("\(valueMaintained) conversion to Int maintains value")
 }
