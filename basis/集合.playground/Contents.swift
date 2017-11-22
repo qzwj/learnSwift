@@ -19,7 +19,7 @@ emptyArr1 = [] //有类型的数组可以直接这样清空
 //Swift 中的Array类型还提供一个可以创建特定大小并且所有数据都被默认的构造方法。我们可以把准备加入新数组的数据项数量（count）和适当类型的初始值（repeating）传入数组构造函数
 var threeArr = Array(repeating: 0.0, count: 3) // 这个函数没有默认的提示
 var fourArr = Array(repeating: 2.2, count: 4)
-var oneArr = Array(repeating: 1, count: 1)
+var oneArr = [Int](repeating: 1, count: 1) //或者这样
 //通过两个数组相加创建一个数组
 var sevenArr = threeArr + fourArr // 只有类型相同才可以相加
 //通过字面量创建一个数组
